@@ -11,14 +11,20 @@ variable "cidr_block" {
 
 variable "instance_type" {
   description = "machine power "
+  type        = list(string)
 }
 
 variable "pub_subnet" {
   description = "subnet for te eks"
+  type        = list(string)
 
 }
 
 variable "pri_subnet" {
   description = "subnet for te eks"
+  type        = list(string)
+}
 
+variable "ami_type" {
+  description = "subnet for te eks"
 }
