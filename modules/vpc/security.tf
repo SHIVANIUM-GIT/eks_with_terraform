@@ -6,7 +6,8 @@ resource "aws_security_group" "eks_cluster_sg" {
     from_port = 443
     to_port = 443
     protocol = "tcp"
-    cidr_blocks = [var.cidr_block]
+    # cidr_blocks = [var.cidr_block]
+    security_groups = [aws_security_group.eks_node_group.id]
   }
 
   egress{
@@ -21,12 +22,18 @@ resource "aws_security_group" "eks_cluster_sg" {
   }
 }
 
-resource "aws_security_group" "els_node_group" {
+resource "aws_security_group" "eks_node_group" {
   name =  "${var.name}-node-group-sg"
   vpc_id = aws_vpc.vpc.id
 
   ingress {
-    from_port = 0
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    self        = true
+  }
+  ingress {
+    from_port = 1025
     to_port = 65535
     protocol = "tcp"
     security_groups = [aws_security_group.eks_cluster_sg.id]
