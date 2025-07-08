@@ -16,7 +16,7 @@ module "eks" {
   sg_control_id  = module.vpc.security_group_Control_id
   instance_type = var.instance_type
   ami_type       = var.ami_type
-  jump_box_sg_id = module.vpc.jump_box_id
+  jump_box_sg_id = module.vpc.jump_box_sg_id
 }
 
 module "jump_box" {
