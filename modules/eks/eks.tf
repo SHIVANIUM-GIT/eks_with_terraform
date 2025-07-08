@@ -9,7 +9,7 @@ resource "aws_eks_cluster" "cluster" {
     security_group_ids = [var.sg_control_id]
 
     endpoint_private_access = true
-    endpoint_public_access  = false
+    endpoint_public_access  = true
   }
 
   enabled_cluster_log_types = ["api", "audit", "authenticator"]
