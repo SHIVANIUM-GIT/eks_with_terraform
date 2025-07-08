@@ -1,5 +1,5 @@
-resource "aws_security_group" "control-panel-sg" {
-  name = "${var.name}-sg"
+resource "aws_security_group" "eks_cluster_sg" {
+  name = "${var.name}-control-panel-sg"
   vpc_id = aws_vpc.vpc.id
 
   ingress{
@@ -9,24 +9,10 @@ resource "aws_security_group" "control-panel-sg" {
     cidr_blocks = [var.cidr_block]
   }
 
-  ingress{
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress{
-    from_port = 10250
-    to_port = 10250
-    protocol = "tcp"
-    cidr_blocks = [var.cidr_block]
-  }
-
   egress{
     from_port = 0
     to_port =  0
-    protocol = -1
+    protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"] 
   }
 
@@ -35,3 +21,26 @@ resource "aws_security_group" "control-panel-sg" {
   }
 }
 
+resource "aws_security_group" "els_node_group" {
+  name =  "${var.name}-node-group-sg"
+  vpc_id = aws_vpc.vpc.id
+
+  ingress {
+    from_port = 0
+    to_port = 65535
+    protocol = "tcp"
+    security_groups = [aws_security_group.eks_cluster_sg.id]
+  }
+
+  egress{
+    from_port = 0
+    to_port =  0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+
+  tags = {
+    Name = "${var.name}-node-group-sg"
+  }
+
+}

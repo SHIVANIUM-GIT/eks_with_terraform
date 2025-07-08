@@ -11,5 +11,5 @@ output "pri_subnet_id" {
 }
 
 output "security_group_Control_id" {
-    value = aws_security_group.control-panel-sg.id
+    value = aws_security_group.eks_cluster_sg.id
 }

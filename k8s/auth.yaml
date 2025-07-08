@@ -1,0 +1,13 @@
+namespace:
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapUser: |
+    - userarn:  arn:aws:iam::227453107220:user/debain12_user
+      username: debain12_user
+      group:
+        - system:master

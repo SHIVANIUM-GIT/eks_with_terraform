@@ -15,20 +15,3 @@ resource "aws_eks_cluster" "cluster" {
   enabled_cluster_log_types = ["api", "audit", "authenticator"]
   depends_on = [ aws_iam_role_policy_attachment.eks_cluster_policy ]
 }
-
-# resource "aws_eks_addon" "coredns" {
-#   cluster_name = aws_eks_cluster.cluster.name
-#   addon_name = "CoreDNS"
-  
-# }
-
-# resource "aws_eks_addon" "Kube" {
-#   cluster_name = aws_eks_cluster.cluster.name
-#   addon_name = "kube-proxy"
-  
-# }
-
-# resource "aws_eks_addon" "vpc_cni" {
-#   cluster_name = aws_eks_cluster.cluster.name
-#   addon_name   = "vpc-cni"
-# }

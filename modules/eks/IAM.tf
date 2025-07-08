@@ -43,17 +43,13 @@ resource "aws_iam_role" "role_node_group" {
   } )
 }
 
-resource "aws_iam_role_policy_attachment" "node_group_worker_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.role_node_group.name
-}
 
-resource "aws_iam_role_policy_attachment" "node_group_cni_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.role_node_group.name
-}
-
-resource "aws_iam_role_policy_attachment" "node_group_ecr_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+resource "aws_iam_role_policy_attachment" "role_policy" {
+  for_each   = toset([
+    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy", 
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+  ])
+  policy_arn = each.value
   role       = aws_iam_role.role_node_group.name
 }
