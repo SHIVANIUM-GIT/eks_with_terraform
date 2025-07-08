@@ -14,6 +14,6 @@ output "security_group_Control_id" {
     value = aws_security_group.node-group-sg.id
 }
 
-output "jump_box_id" {
+output "jump_box_sg_id" {
   value = aws_security_group.jump-box-sg.id
 }
