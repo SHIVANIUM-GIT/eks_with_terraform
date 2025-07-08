@@ -43,7 +43,6 @@ resource "aws_nat_gateway" "nat"{
   depends_on = [ aws_internet_gateway.igw ]
 }
 
-
 resource "aws_subnet" "public" {
   count = length(var.pub_subnet)
 
@@ -108,7 +107,6 @@ resource "aws_route_table" "private_route" {
     Name = "${var.name}-private-route-${count.index+ 1}"
   }
 }
-
 
 resource "aws_route_table_association" "private_route_table" {
     count = length(var.pri_subnet)

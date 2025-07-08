@@ -14,3 +14,4 @@ variable "pub_subnet" {
 variable "pri_subnet" {
   default = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 }
+

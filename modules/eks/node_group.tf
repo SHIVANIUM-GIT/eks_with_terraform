@@ -11,10 +11,13 @@ resource "aws_eks_node_group" "node-group" {
       min_size = 1
     }
 
+    instance_types = [var.instance_type]
     ami_type = var.ami_type 
-    instance_types = var.instance_types
 
-
+    remote_access {
+     ec2_ssh_key = "DevOps-Pratice"
+     source_security_group_ids = [var.jump_box_sg_id]
+    }
 
   depends_on = [
     aws_iam_role_policy_attachment.role_policy

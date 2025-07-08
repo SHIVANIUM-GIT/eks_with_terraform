@@ -27,21 +27,18 @@ variable "sg_control_id" {
 }
 
 # Node Group Variables
-variable "instance_types" {  # Changed from instance_type to plural
+variable "instance_type" { 
   description = "List of EC2 instance types for worker nodes"
-  type        = list(string)
+  type        = string
 }
 
 variable "ami_type" {
   description = "AMI type for worker nodes (AL2_x86_64, AL2_arm_64, BOTTLEROCKET_x86_64, etc.)"
   type        = string
-  default     = "AL2_x86_64"  # Amazon Linux 2
+  default     = "AL2_x86_64"  
 }
 
-# Optional Variables (Recommended)
-variable "cluster_version" {
-  description = "Kubernetes version for EKS cluster"
-  type        = string
-  default     = "1.30"
+variable "jump_box_sg_id" {
+  type = string
+  description = "Security group for the jump box"
 }
-
