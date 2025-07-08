@@ -26,6 +26,5 @@ module "jump_box" {
   pub_subnet_id  = module.vpc.pub_subnet_id
   instance_ami   = var.instance_ami
   instance_type =  var.instance_type
-  jump_box_sg_id = module.vpc.jump_box_id
-
+  jump_box_sg_id = module.vpc.jump_box_sg_id
 }
