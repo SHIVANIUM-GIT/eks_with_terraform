@@ -49,5 +49,4 @@ resource "aws_security_group" "jump-box-sg" {
     Name = "${var.name}-jump-box-sg"
   }
 
-  
 }
