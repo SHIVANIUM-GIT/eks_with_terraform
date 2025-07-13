@@ -8,5 +8,8 @@ resource "aws_eks_addon" "addons" {
   addon_name         = each.value
   resolve_conflicts_on_create       = "OVERWRITE"
 
-  depends_on = [aws_eks_cluster.cluster]  
+  depends_on = [
+    aws_eks_cluster.cluster,
+    aws_eks_node_group.node-group
+  ] 
 }

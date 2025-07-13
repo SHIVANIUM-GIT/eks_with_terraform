@@ -35,7 +35,7 @@ variable "instance_type" {
 variable "ami_type" {
   description = "AMI type for worker nodes (AL2_x86_64, AL2_arm_64, BOTTLEROCKET_x86_64, etc.)"
   type        = string
-  default     = "AL2_x86_64"  
+  # default     = "AL2_x86_64"  
 }
 
 variable "jump_box_sg_id" {
