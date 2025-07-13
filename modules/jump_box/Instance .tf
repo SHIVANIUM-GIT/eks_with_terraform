@@ -6,6 +6,8 @@ resource "aws_instance" "jump_server" {
   vpc_security_group_ids = [var.jump_box_sg_id]
   associate_public_ip_address = true
 
+  user_data = file("./scripts/install.sh")
+
   tags = {
     Name = "${var.name}-jump-server"
   }

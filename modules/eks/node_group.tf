@@ -1,5 +1,5 @@
 resource "aws_eks_node_group" "node-group" {
-    node_group_name = "${var.name}-node-gourp"
+    node_group_name = "${var.name}-node-group"
     cluster_name = aws_eks_cluster.cluster.name
     node_role_arn = aws_iam_role.role_node_group.arn
 
