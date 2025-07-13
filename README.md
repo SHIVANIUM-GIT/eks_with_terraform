@@ -144,12 +144,3 @@ terraform destroy
 ```
 
 ---
-
-## Notes
-
-- For production, always use secure backend for state storage (e.g., S3 with encryption and DynamoDB locking).
-- Review IAM permissions and restrict as needed.
-- This repository is provided as a starting point. Adjust configurations for your organization's standards.
-
----
-
