@@ -8,12 +8,17 @@ resource "aws_security_group" "node-group-sg" {
     protocol    = "tcp"
     cidr_blocks =[ var.cidr_block]
   }
-
   ingress {
     from_port   =  0
     to_port     =  65535
     protocol    = "tcp"
     self = true
+  }
+  ingress {
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.jump-box-sg.id]  
   }
   egress {
     from_port   = 0
