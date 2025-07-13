@@ -71,7 +71,6 @@ resource "aws_route_table" "pub_route" {
   }
 }
 
-
 resource "aws_route_table_association" "pub_route_table" {
     count = length(var.pub_subnet)
 
