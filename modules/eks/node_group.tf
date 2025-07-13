@@ -16,7 +16,8 @@ resource "aws_eks_node_group" "node-group" {
 
 
   depends_on = [
-    aws_iam_role_policy_attachment.role_policy
+    aws_iam_role_policy_attachment.role_policy,
+    aws_eks_addon.addons
   ]
 
   tags = {
