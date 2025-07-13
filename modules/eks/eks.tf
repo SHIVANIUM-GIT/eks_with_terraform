@@ -11,6 +11,9 @@ resource "aws_eks_cluster" "cluster" {
     endpoint_private_access = true
     endpoint_public_access  = true
   }
+  lifecycle {
+  prevent_destroy = true
+}
 
   enabled_cluster_log_types = ["api", "audit", "authenticator"]
   depends_on = [ aws_iam_role_policy_attachment.eks_cluster_policy ]
